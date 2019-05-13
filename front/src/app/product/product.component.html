@@ -1,0 +1,23 @@
+<!--<button type="button" class="btn btn-link btn-sm" (click)="navigateBack()">Back</button>-->
+
+<div *ngIf="!isLogged">
+  <button routerLink="/login/">Sign in</button>
+</div>
+
+<table class="table" *ngIf="product">
+  <tr>
+    <td>{{product.title}}</td>
+  </tr>
+  <tr>
+    <td>{{product.price}}</td>
+  </tr>
+  <tr>
+    <td>{{product.description}}</td>
+  </tr>
+
+  <div *ngIf="isLogged">
+    <button (click)="addToBasket(product.id)">Add to Cart</button>
+  </div>
+
+</table>
+
