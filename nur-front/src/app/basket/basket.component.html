@@ -1,0 +1,22 @@
+
+<!--<div *ngIf="productsInBasket; else free">-->
+<div *ngIf="productsInBasket">
+  <div *ngFor="let pib of productsInBasket">
+    {{pib.product.title}}
+    {{pib.product.price}}
+    <br/>
+    quantity: {{pib.quantity}}
+  </div>
+  <br/>
+  <div>Totoal price: {{totalPrice}}</div>
+  <br/>
+  <button (click)="orderBasket()">Order them</button>
+</div>
+
+<!--<ng-template #free>-->
+<!--  Basket is free-->
+<!--</ng-template>-->
+<div *ngIf="productsInBasket == null">
+  Basket is free
+</div>
+

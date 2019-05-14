@@ -1,0 +1,28 @@
+<table *ngFor="let p of products" >
+  <tr>
+    <td>{{p.title}}</td>
+    <button (click)="deleteProduct(p.id)">Delete</button>
+    <button (click)="updateProduct(p.id)">Update</button>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td>title</td>
+    <td><input type="text" class="form-control" [(ngModel)]="title"> </td>
+  </tr>
+  <tr>
+    <td>price</td>
+    <td><input type="text" class="form-control" [(ngModel)]="price"> </td>
+  </tr>
+  <tr>
+    <td>desk</td>
+    <td><input type="text" class="form-control" [(ngModel)]="desk"> </td>
+  </tr>
+</table>
+
+<div *ngFor="let c of categories" (click)="createProduct(c.id)">
+  {{c.title}}
+</div>
+
+<button (click)="logout()">logout</button>

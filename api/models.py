@@ -5,7 +5,12 @@ from django.db import models
 
 
 class Customer(User):
-    basket_free = models.BooleanField()
+    basket_free = models.BooleanField(default = True)
+    isAdmin = models.BooleanField(default = False)
+
+class ProductAdminManager(models.Manager):
+    def for_user(self, user):
+        return self.filter(added_by=user)
 
 class Category(models.Model):
     title = models.CharField(max_length=100)
@@ -16,6 +21,8 @@ class Product(models.Model):
     price = models.IntegerField()
     description = models.CharField(max_length=255)
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE, default=None, null=True)
+    added_by = models.ForeignKey(Customer, on_delete = models.CASCADE, default = 6)
+    objects = ProductAdminManager()
 
 
 class Basket(models.Model):
@@ -37,6 +44,8 @@ class Order(object):
         self.products = products
         self.basket_group = basket_group
         self.total_price = total_price
+
+
 
 
 

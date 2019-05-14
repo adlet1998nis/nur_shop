@@ -1,0 +1,13 @@
+<p>
+  history works!
+</p>
+
+<div *ngIf="histories">
+  <div *ngFor="let history of histories">
+    {{history.basket_group.created_at}}
+    {{history.total_price}}
+    <div *ngFor="let product of history.products">
+      {{product.title}} - {{product.price}}
+    </div>
+  </div>
+</div>

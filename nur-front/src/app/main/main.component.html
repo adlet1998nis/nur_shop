@@ -1,0 +1,39 @@
+<p>
+  main works!
+</p>
+
+Categories:
+<div *ngFor="let c of categories" (click)="getProductsByCategory(c.id)">
+  {{c.title}}
+</div>
+
+<br/>
+
+Products:
+<div *ngFor="let p of products">
+  {{p.title}}
+  <button routerLink="/products/{{p.id}}">detail</button>
+</div>
+
+<br/>
+
+
+
+<div *ngIf="isLogged">
+  <button (click)="goToBasket()">Go to basket</button>
+  <br/>
+  <button (click)="goToHistory()">Go to history</button>
+  <br/>
+  <button (click)="logout()">log out</button>
+</div>
+
+<div *ngIf="!isLogged">
+
+  <button (click)="login()">log in</button>
+</div>
+<div *ngIf="isAdminLogged">
+  <button routerLink="/adminka/">Go to admin</button>
+</div>
+
+
+

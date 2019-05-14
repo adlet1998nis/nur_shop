@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 # Create your views here.
 
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.decorators import permission_classes, api_view
 from rest_framework.permissions import IsAuthenticated
@@ -12,7 +12,7 @@ from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from api.models import Product, Category, Basket, Customer, BasketListModel, Order
 from api.serializers import ProductSerializer, CategorySerializer, CategoryDetailSerializer, CustomerSerializer, \
-    AddProductSerializer, BasketSerializer, CustomerAuthSerializer, OrderSerializer
+    AddProductSerializer, BasketSerializer, CustomerAuthSerializer, OrderSerializer, ProductAdminSerializer
 
 
 class ProductList(generics.ListCreateAPIView):
@@ -203,3 +203,32 @@ class BasketList(APIView):
 class ProductD(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
+class ProductAdmin(APIView):
+
+    def get(self, request):
+        customer = Customer.objects.get(id=self.request.user.id)
+        products = Product.objects.for_user(customer)
+        serializer = ProductSerializer(products, many = True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        data = {
+            'title': self.request.data.get('title'),
+            'price': self.request.data.get('price'),
+            'description': self.request.data.get('desk')
+
+        }
+        category = Category.objects.get(id = self.request.data.get('category_id'))
+        customer = Customer.objects.get(id = self.request.user.id)
+        serializer = ProductAdminSerializer(data = data)
+        if serializer.is_valid():
+            serializer.save(added_by = customer, category = category)
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
+        return Response(serializer.errors, status = status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class ProductAdminDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductAdminSerializer
+    permission_classes = (IsAuthenticated,)
+

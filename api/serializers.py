@@ -23,9 +23,6 @@ class CategoryDetailSerializer(serializers.ModelSerializer):
         model = Category
         fields = ('id', 'title', 'products')
 
-
-
-
 class AddProductSerializer(serializers.Serializer):
     product_id = serializers.IntegerField()
 
@@ -40,9 +37,15 @@ class BasketSerializer(serializers.ModelSerializer):
 class CustomerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Customer
-        fields = ('id', 'username')
+        fields = ('id', 'username', 'isAdmin',)
 
 
+class ProductAdminSerializer(serializers.ModelSerializer):
+    added_by = CustomerSerializer(read_only = True)
+    category = CategorySerializer(read_only = True)
+    class Meta:
+        model = Product
+        fields = '__all__'
 
 class CustomerAuthSerializer(serializers.Serializer):
     username = serializers.CharField()

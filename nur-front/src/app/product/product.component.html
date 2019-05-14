@@ -1,0 +1,17 @@
+<p>
+  product works!
+</p>
+
+<div *ngIf="product">
+  {{product.title}}
+  {{product.description}}
+  {{product.category.title}}
+</div>
+
+<div *ngIf="isLogged">
+  <button (click)="addToBasket(product.id)">Add to basket</button>
+</div>
+
+<div *ngIf="!isLogged">
+  You can't add to basket until login
+</div>
