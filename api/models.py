@@ -25,6 +25,7 @@ class Product(models.Model):
     objects = ProductAdminManager()
 
 
+
 class Basket(models.Model):
     quantity = models.IntegerField()
     basket_group_id = models.IntegerField()

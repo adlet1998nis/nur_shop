@@ -1,0 +1,165 @@
+
+.main{
+  min-height: 1000px;
+  width: 100%;
+  height: 100%;
+  background: aliceblue;
+}
+
+.title{
+  color: yellow;
+  font-weight: bold;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.nav_link{
+  color: yellow !important;
+  font-weight: bold;
+  cursor: grab;
+}
+
+.nav_link:link {
+  text-decoration: none !important;
+}
+
+.nav_link:visited {
+  text-decoration: none !important;;
+}
+
+.nav_link:hover {
+  text-decoration: underline !important;;
+}
+
+.nav_link:active {
+  text-decoration: underline !important;;
+}
+
+.navig{
+  height: 40px;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.navig2{
+  height: 40px;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+
+.top{
+  width: auto;
+  background: lightskyblue;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container-main{
+  padding: 0 !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-category{
+  width: 20%;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-items: stretch;
+}
+
+.categoty-btns{
+  padding: 10px;
+  width: 100%;
+  color: #FFFFFF !important;
+  background: lightskyblue;
+  cursor: grab;
+  outline-style: solid;
+  outline-color: white;
+}
+
+.categoty-btns:link {
+}
+
+.categoty-btns:visited {
+}
+
+.categoty-btns:hover {
+  background: lightblue;
+  color: darkblue !important;
+}
+
+.categoty-btns:active {
+  background: lightblue;
+  color: darkblue !important;
+}
+
+.container-category-title{
+  padding: 24px 10px 24px 10px;
+  width: 100%;
+  color: #FFFFFF !important;
+  background: dodgerblue;
+  cursor: grab;
+}
+
+.container-products{
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-item{
+  background: #FFFFFF;
+  width: 300px;
+  height: auto;
+  outline-style: solid;
+  outline-color: lightskyblue;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image{
+  width: 200px;
+  height: 220px;
+  margin-top: 10px;
+}
+
+.product-details-btn{
+  color: lightskyblue;
+  text-underline: lightskyblue;
+  cursor: grab;
+  margin: 4px;
+}
+
+.product-name{
+  font-weight: bold;
+}
+
+.product-desc{
+  color: gray;
+  font-size: 80%;
+  margin: 0px 20px 0px 20px;
+  align-content: center;
+  text-align: center;
+}

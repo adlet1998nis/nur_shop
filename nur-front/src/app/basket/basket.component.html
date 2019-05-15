@@ -1,22 +1,25 @@
-
-<!--<div *ngIf="productsInBasket; else free">-->
-<div *ngIf="productsInBasket">
-  <div *ngFor="let pib of productsInBasket">
-    {{pib.product.title}}
-    {{pib.product.price}}
-    <br/>
-    quantity: {{pib.quantity}}
+<div class="main-basket">
+  <div style="width: 100%; text-align: center; padding: 30px">
+    <h1>NUR-BASKET</h1>
   </div>
-  <br/>
-  <div>Totoal price: {{totalPrice}}</div>
-  <br/>
-  <button (click)="orderBasket()">Order them</button>
-</div>
+  <div *ngIf="productsInBasket">
+    <div class="main-basket-box">
+      <div class="product-item" *ngFor="let p of productsInBasket">
+        <img class="product-image" src="https://www.scmp.com/sites/default/files/2015/04/26/93413029e3a6b6c770b024da42a3b8c1.jpg">
+        <span class="product-name">{{p.product.title}}</span>
+        <span class="product-desc">{{p.product.description}}</span>
+        <span><b>Price: </b>{{p.product.price}}₸</span>
+        <span><b>Quantity: </b> {{p.quantity}}</span>
+      </div>
+    </div>
+    <div class="total-busket">
+      <div style="margin: 30px; font-size: 24px"><b>Totoal price: </b> {{totalPrice}} ₸</div>
+      <button class="busket-btn" (click)="orderBasket()">MAKE ORDER</button>
+    </div>
+  </div>
 
-<!--<ng-template #free>-->
-<!--  Basket is free-->
-<!--</ng-template>-->
-<div *ngIf="productsInBasket == null">
-  Basket is free
-</div>
+  <div class="total-busket" *ngIf="productsInBasket == null">
+    <b>Basket is free</b>
+  </div>
 
+</div>

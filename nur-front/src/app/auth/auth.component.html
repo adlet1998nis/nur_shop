@@ -1,15 +1,8 @@
-<p>
-  auth works!
-</p>
-
-<div>
-  <input type="text" [(ngModel)]="login">
+<div class="login-body">
+  <div class="loginContainer">
+    <a class="textSignIn">NUR-SIGN IN TO NUR-SHOP</a>
+    <input class="login-text" type="text" [(ngModel)]="login">
+    <input class="login-text" type="password" [(ngModel)]="password">
+    <button class ="sign-in-btn" (click)="auth()">NUR-SIGN IN</button>
+  </div>
 </div>
-
-<div>
-  <input type="text" [(ngModel)]="password">
-</div>
-
-
-<button (click)="auth()">auth</button>
-

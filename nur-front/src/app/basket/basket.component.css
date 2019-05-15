@@ -1,0 +1,63 @@
+.main-basket {
+  width: 100%;
+  background: aliceblue;
+  min-height: 1000px;
+}
+
+.main-basket-box{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.product-item{
+  background: #FFFFFF;
+  width: 300px;
+  height: auto;
+  outline-style: solid;
+  outline-color: lightskyblue;
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-image{
+  width: 200px;
+  height: 220px;
+  margin-top: 10px;
+}
+
+.product-name{
+  font-weight: bold;
+}
+
+.product-desc{
+  color: gray;
+  font-size: 80%;
+  margin: 0px 20px 0px 20px;
+  align-content: center;
+  text-align: center;
+}
+.busket-btn{
+  transition-duration: 0.4s;
+  background: dodgerblue;
+  border: 20px solid dodgerblue;
+  border-radius: 5px;
+  color: #FFFFFF;
+}
+
+.busket-btn:hover {
+  background-color: dodgerblue;
+  color: white;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.total-busket{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}

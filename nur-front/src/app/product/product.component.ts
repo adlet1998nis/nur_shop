@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ProviderService} from '../shared/services/provider.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +17,9 @@ export class ProductComponent implements OnInit {
   constructor(
     private provider: ProviderService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private location: Location
+  ) { }
 
   ngOnInit() {
     if (localStorage.getItem('Token')){
@@ -30,7 +33,7 @@ export class ProductComponent implements OnInit {
 
   addToBasket(productId: number) {
     this.provider.addToBasket(productId);
-    // this.router.navigateByUrl('');
+    this.location.back();
   }
 
 }

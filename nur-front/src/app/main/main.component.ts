@@ -59,4 +59,7 @@ export class MainComponent implements OnInit {
     this.router.navigateByUrl('auth');
   }
 
+  reload() {
+    this.ngOnInit();
+  }
 }

@@ -1,6 +1,6 @@
 from django.urls import path
 
-from api.views import CategoryList, ProductList, CategoryDetail, BasketList, ProductD, ProductAdmin, ProductAdminDetail
+from api.views import CategoryList, ProductList, CategoryDetail, BasketList, ProductD, ProductAdmin, ProductAdminDetail, api_project
 
 from api import views
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('order/', views.make_order),
     path('products/<int:pk>/', ProductD.as_view()),
     path('productAdmin/', ProductAdmin.as_view()),
-    path('productAdmin/<int:pk>/', ProductAdminDetail.as_view())
+    path('productAdmin/<int:pk>/', ProductAdminDetail.as_view()),
+    path('', api_project)
 ]

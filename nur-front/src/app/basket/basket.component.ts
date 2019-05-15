@@ -3,6 +3,7 @@ import {ProviderService} from '../shared/services/provider.service';
 import {IProductInBasket} from '../shared/models/IProductInBasket';
 import {IProduct} from '../shared/models/IProduct';
 import {Router} from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-basket',
@@ -16,7 +17,8 @@ export class BasketComponent implements OnInit {
 
   constructor(
     private provider: ProviderService,
-    private router: Router) { }
+    private router: Router,
+    private location: Location) { }
 
   ngOnInit() {
     this.provider.getBasket().then(res => {
@@ -28,6 +30,7 @@ export class BasketComponent implements OnInit {
   orderBasket() {
     this.provider.orderBasket();
     this.productsInBasket = null;
+    this.location.back();
   }
 
 

@@ -1,39 +1,46 @@
-<p>
-  main works!
-</p>
+<div class="main">
+  <nav class="top">
+    <span class="title" (click)="reload()">Nur-Shop</span>
 
-Categories:
-<div *ngFor="let c of categories" (click)="getProductsByCategory(c.id)">
-  {{c.title}}
+    <div class="navig" *ngIf="isLogged">
+      <a class="nav_link" (click)="goToBasket()">BASKET</a>
+      <a class="nav_link" (click)="goToHistory()">HISTORY</a>
+      <a class="nav_link" (click)="logout()">SIGN OUT</a>
+    </div>
+    <div class="navig2" *ngIf="!isLogged">
+      <a class="nav_link" (click)="login()">SIGN IN</a>
+    </div>
+  </nav>
+
+
+  <div class="container-main">
+
+    <div class="container-category">
+      <span class="container-category-title">CATEGORIES</span>
+      <div class="categoty-btns" *ngFor="let c of categories" (click)="getProductsByCategory(c.id)">
+        <span>{{c.title}}</span>
+      </div>
+    </div>
+
+
+    <div class="container-products">
+      <div class="product-item" *ngFor="let p of products">
+        <img class="product-image" src="https://www.scmp.com/sites/default/files/2015/04/26/93413029e3a6b6c770b024da42a3b8c1.jpg">
+        <span class="product-name">{{p.title}}</span>
+        <span class="product-desc">{{p.description}}</span>
+        <span><b>Price: </b>{{p.price}}₸</span>
+        <span class="product-details-btn" routerLink="/products/{{p.id}}">Show more...</span>
+      </div>
+
+      <br/>
+    </div>
+  </div>
+
+
+  <div *ngIf="isAdminLogged">
+    <button routerLink="/adminka/">Go to admin</button>
+  </div>
+
 </div>
-
-<br/>
-
-Products:
-<div *ngFor="let p of products">
-  {{p.title}}
-  <button routerLink="/products/{{p.id}}">detail</button>
-</div>
-
-<br/>
-
-
-
-<div *ngIf="isLogged">
-  <button (click)="goToBasket()">Go to basket</button>
-  <br/>
-  <button (click)="goToHistory()">Go to history</button>
-  <br/>
-  <button (click)="logout()">log out</button>
-</div>
-
-<div *ngIf="!isLogged">
-
-  <button (click)="login()">log in</button>
-</div>
-<div *ngIf="isAdminLogged">
-  <button routerLink="/adminka/">Go to admin</button>
-</div>
-
 
 

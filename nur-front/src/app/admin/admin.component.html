@@ -1,28 +1,89 @@
-<table *ngFor="let p of products" >
-  <tr>
-    <td>{{p.title}}</td>
-    <button (click)="deleteProduct(p.id)">Delete</button>
-    <button (click)="updateProduct(p.id)">Update</button>
-  </tr>
-</table>
+<div class="main-admin">
+  <nav class="top">
+    <span class="title">Nur-Shop Admin Page</span>
+    <div class="navig">
+      <a class="nav_link" (click)="logout()">SIGN OUT</a>
+    </div>
+  </nav>
 
-<table>
-  <tr>
-    <td>title</td>
-    <td><input type="text" class="form-control" [(ngModel)]="title"> </td>
-  </tr>
-  <tr>
-    <td>price</td>
-    <td><input type="text" class="form-control" [(ngModel)]="price"> </td>
-  </tr>
-  <tr>
-    <td>desk</td>
-    <td><input type="text" class="form-control" [(ngModel)]="desk"> </td>
-  </tr>
-</table>
 
-<div *ngFor="let c of categories" (click)="createProduct(c.id)">
-  {{c.title}}
+  <div class="admin-box">
+
+    <div class="admin-left">
+      <div class="admin-box-form">
+        <h3 style="text-align: center; margin: 20px;">Update and Create Form</h3>
+        <table>
+          <tr style="margin: 10px">
+            <td><b>Title: </b></td>
+            <td><input type="text" class="form-control" [(ngModel)]="title"> </td>
+          </tr>
+          <tr style="margin: 10px">
+            <td><b>Price: </b></td>
+            <td><input type="text" class="form-control" [(ngModel)]="price"> </td>
+          </tr>
+          <tr style="margin: 10px">
+            <td><b>Description: </b></td>
+            <td><textarea type="text" class="form-control" [(ngModel)]="desk"></textarea> </td>
+          </tr>
+        </table>
+
+
+        <span style="margin: 10px 0 10px 0;"><b>Choose Category of the product:</b></span>
+        <div class="category-choice-box">
+          <div class="category-choice-btn" *ngFor="let c of categories" (click)="tmpProduct(c.id)">
+            {{c.title}}
+          </div>
+        </div>
+
+        <div class="total-busket">
+          <button class="busket-btn" (click)="createProduct(tmpCategId)">CREATE</button>
+        </div>
+      </div>
+
+<!--      <div class="admin-box-form">-->
+<!--        <h3 style="text-align: center; margin: 20px;">Update Form</h3>-->
+<!--        <table>-->
+<!--          <tr style="margin: 10px">-->
+<!--            <td><b>Title: </b></td>-->
+<!--            <td><input type="text" class="form-control" [(ngModel)]="title"> </td>-->
+<!--          </tr>-->
+<!--          <tr style="margin: 10px">-->
+<!--            <td><b>Price: </b></td>-->
+<!--            <td><input type="text" class="form-control" [(ngModel)]="price"> </td>-->
+<!--          </tr>-->
+<!--          <tr style="margin: 10px">-->
+<!--            <td><b>Description: </b></td>-->
+<!--            <td><textarea type="text" class="form-control" [(ngModel)]="desk"></textarea> </td>-->
+<!--          </tr>-->
+<!--        </table>-->
+
+
+<!--        <span style="margin: 10px 0 10px 0;"><b>Choose Category of the product:</b></span>-->
+<!--        <div class="category-choice-box">-->
+<!--          <div class="category-choice-btn" *ngFor="let c of categories" (click)="tmpProduct(c.id)">-->
+<!--            {{c.title}}-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--        <div class="total-busket">-->
+<!--          <button class="busket-btn" (click)="createProduct(tmpCategId)">UPDATE</button>-->
+<!--        </div>-->
+<!--      </div>-->
+    </div>
+
+
+    <div class="admin-box-grid">
+      <div class="product-item" *ngFor="let p of products">
+        <img class="product-image" src="https://www.scmp.com/sites/default/files/2015/04/26/93413029e3a6b6c770b024da42a3b8c1.jpg">
+        <span class="product-name">{{p.title}}</span>
+        <span class="product-desc">{{p.description}}</span>
+        <span><b>Price: </b>{{p.price}}₸</span>
+        <button class="delete-btn" (click)="deleteProduct(p.id)">Delete</button>
+        <button class="update-btn" (click)="updateProduct(p.id)">Update</button>
+      </div>
+    </div>
+
+  </div>
+
+
 </div>
-
-<button (click)="logout()">logout</button>

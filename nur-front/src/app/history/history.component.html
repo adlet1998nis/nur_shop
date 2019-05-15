@@ -1,13 +1,17 @@
-<p>
-  history works!
-</p>
+<div class="main-history">
+  <div style="width: 100%; text-align: center; padding: 30px">
+    <h1>NUR-HISTORY</h1>
+  </div>
 
-<div *ngIf="histories">
-  <div *ngFor="let history of histories">
-    {{history.basket_group.created_at}}
-    {{history.total_price}}
-    <div *ngFor="let product of history.products">
-      {{product.title}} - {{product.price}}
+  <div *ngIf="histories">
+    <div class="history-card" *ngFor="let history of histories">
+      <div><b>Nur-products:</b></div>
+      <div style="margin: 5px 0px 5px 0px;" *ngFor="let product of history.products">
+        <u>{{product.title}}</u> => <b>{{product.price}}₸</b>
+      </div>
+      <div class="history-line"></div>
+      <div><b>Ordered at: </b> {{history.basket_group.created_at}}</div>
+      <div><b>Total Price: </b> {{history.total_price}}₸</div>
     </div>
   </div>
 </div>

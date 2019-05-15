@@ -1,17 +1,24 @@
-<p>
-  product works!
-</p>
 
-<div *ngIf="product">
-  {{product.title}}
-  {{product.description}}
-  {{product.category.title}}
-</div>
 
-<div *ngIf="isLogged">
-  <button (click)="addToBasket(product.id)">Add to basket</button>
-</div>
 
-<div *ngIf="!isLogged">
-  You can't add to basket until login
+<div class="product-detail-main">
+  <div style="width: 100%; text-align: center; padding: 30px">
+    <h1>NUR-DETAIL</h1>
+  </div>
+  <div class="product-detail-main-dialog">
+    <div class="product-detail-main-dialog-box1" *ngIf="product">
+      <img class="product-detail-image" src="https://www.scmp.com/sites/default/files/2015/04/26/93413029e3a6b6c770b024da42a3b8c1.jpg">
+      <span class="product-detail-name">{{product.title}}</span>
+      <span class="product-deatail-desc">{{product.description}}</span>
+      <span><b>Price: </b>{{product.price}}₸</span>
+    </div>
+
+    <div *ngIf="isLogged">
+      <button class="add-to-busket-btn" (click)="addToBasket(product.id)"><span>Add to basket </span></button>
+    </div>
+
+    <div *ngIf="!isLogged">
+      You can't add to basket until login
+    </div>
+  </div>
 </div>

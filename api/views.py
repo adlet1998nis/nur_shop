@@ -232,3 +232,24 @@ class ProductAdminDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ProductAdminSerializer
     permission_classes = (IsAuthenticated,)
 
+
+def api_project(request):
+    lists = []
+    lists.append('api/categories/ - nur shop categories')
+    lists.append('api/products/ - nur shop products')
+    lists.append('api/categories/{id} - nur shop products for each category and info')
+    lists.append('api/basket/ - operations on basket')
+    lists.append('api/login/ - customer login')
+    lists.append('api/logout/ - customer logout')
+    lists.append('api/history/ - history info')
+    lists.append('api/order/ - order')
+    lists.append('api/products/{id} - products info')
+    lists.append('api/productAdmin/{id} - operations of admin with products')
+    context = {
+        'apishki': lists,
+    }
+    return render(request, 'apishki.html', context)
+
+
+
+
